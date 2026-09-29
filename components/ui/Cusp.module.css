@@ -1,0 +1,11 @@
+.cusp {
+  display: block;
+  width: var(--cusp);
+  height: calc(var(--cusp) / 2);
+  fill: currentColor;
+  pointer-events: none;
+}
+
+.tall {
+  height: var(--cusp);
+}

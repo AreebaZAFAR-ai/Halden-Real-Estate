@@ -1,0 +1,98 @@
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  border-bottom: 1px solid var(--line);
+}
+
+.link {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--spacing-7) 1fr auto;
+  column-gap: var(--spacing-4);
+  row-gap: var(--spacing-2);
+  align-items: baseline;
+  padding-block: var(--spacing-6);
+  transition: background-color var(--duration) var(--ease-out);
+}
+
+.index {
+  font-size: var(--text-meta);
+  color: var(--muted);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.summary {
+  grid-column: 2 / -1;
+  max-width: 44ch;
+  font-size: var(--text-meta);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.arrow {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: center;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.preview {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .link {
+    grid-template-columns: var(--spacing-9) minmax(0, 1.1fr) minmax(0, 1fr) auto;
+    align-items: center;
+    padding-block: var(--spacing-7);
+  }
+
+  .summary {
+    grid-column: 3;
+  }
+
+  .arrow {
+    grid-column: 4;
+  }
+
+  /* Floating photograph that fades in beside the hovered row. */
+  .preview {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    width: 180px;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-arch);
+    opacity: 0;
+    transform: translate3d(0, -45%, 0) scale(0.92);
+    transition:
+      opacity 0.5s var(--ease-out),
+      transform 0.8s var(--ease-out);
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+@media (hover: hover) {
+  .link:hover .title {
+    transform: translateX(var(--spacing-3));
+  }
+
+  .link:hover .arrow {
+    transform: translateX(var(--spacing-2));
+  }
+
+  .link:hover .preview {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0) scale(1);
+  }
+}

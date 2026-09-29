@@ -1,0 +1,38 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.02em;
+}
+
+.rule {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid currentColor;
+}
+
+.inline .text {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--duration) var(--ease-out);
+}
+
+.arrow {
+  flex: none;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .link:hover .arrow {
+    transform: translateX(var(--spacing-1));
+  }
+
+  .inline:hover .text {
+    background-size: 0 1px;
+    background-position: 100% 100%;
+  }
+}

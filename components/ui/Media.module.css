@@ -1,0 +1,17 @@
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-dark-soft);
+  isolation: isolate;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Extra height so the image can travel without exposing its edges. */
+.parallaxImage {
+  object-fit: cover;
+  top: -10% !important;
+  height: 120% !important;
+}

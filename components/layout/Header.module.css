@@ -1,0 +1,233 @@
+.header {
+  --fg: var(--color-ink);
+  --bg: var(--color-light);
+  --rule: var(--color-line-dark);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: var(--fg);
+  transition:
+    transform 0.7s var(--ease-out),
+    visibility 0s linear 0s;
+}
+
+.header[data-theme="dark"],
+.header[data-theme="image"] {
+  --fg: var(--color-cream);
+  --bg: var(--color-dark);
+  --rule: var(--color-line);
+}
+
+/* Background and hairline live on a pseudo-element so they can fade. */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  transition:
+    opacity var(--duration) var(--ease-out),
+    background-color var(--duration) var(--ease-out);
+}
+
+.header[data-solid]:not([data-theme="image"])::before {
+  opacity: 1;
+}
+
+.header[data-state="tucked"] {
+  transform: translate3d(0, -100%, 0);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  height: var(--header-h);
+}
+
+.logo {
+  margin-right: auto;
+  transition: color var(--duration) var(--ease-out);
+}
+
+.nav {
+  display: none;
+}
+
+.links {
+  display: flex;
+  gap: var(--spacing-6);
+}
+
+.link,
+.cta {
+  position: relative;
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.02em;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.cta {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding-left: var(--spacing-6);
+  border-left: 1px solid var(--rule);
+  height: var(--spacing-5);
+}
+
+@media (hover: hover) {
+  .link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* --- Mobile toggle ------------------------------------------------------- */
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  height: var(--spacing-7);
+  font-size: var(--text-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.toggleLines {
+  position: relative;
+  width: var(--spacing-5);
+  height: 7px;
+  border-block: 1px solid currentColor;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.header[data-state="open"] .toggleLines {
+  transform: scaleX(0.6);
+}
+
+/* Homepage, over the hero: the hero owns the brand; only the toggle shows. */
+.header[data-state="hero"] .logo {
+  visibility: hidden;
+}
+
+.header[data-state="hero"] {
+  color: var(--color-cream);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+
+  .cta {
+    display: inline-flex;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  /* On desktop the hero has its own split navigation. */
+  .header[data-state="hero"] {
+    transform: translate3d(0, -100%, 0);
+    visibility: hidden;
+    transition:
+      transform 0.7s var(--ease-out),
+      visibility 0s linear 0.7s;
+  }
+}
+
+/* --- Mobile menu --------------------------------------------------------- */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-dark);
+  color: var(--color-cream);
+  overflow-y: auto;
+  animation: menu-in 0.7s var(--ease-out);
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menuInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+  min-height: 100%;
+  padding-top: calc(var(--header-h) + var(--spacing-7));
+  padding-bottom: var(--spacing-7);
+}
+
+.menuList {
+  border-top: 1px solid var(--color-line);
+}
+
+.menuList li {
+  border-bottom: 1px solid var(--color-line);
+  animation: item-in 0.8s var(--ease-out) both;
+  animation-delay: calc(0.08s + var(--i) * 0.05s);
+}
+
+.menuLink {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+}
+
+.menuLink[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+.menuIndex {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  color: var(--color-muted-on-dark);
+}
+
+.menuFoot {
+  display: grid;
+  gap: var(--spacing-2);
+  font-size: var(--text-meta);
+  color: var(--color-muted-on-dark);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--spacing-4), 0);
+  }
+}

@@ -1,0 +1,221 @@
+/* Shared layout for inner pages — kept short: hero, intro, key info, CTA. */
+
+.section {
+  padding-block: var(--section-space);
+}
+
+.sectionTight {
+  padding-top: 0;
+  padding-bottom: var(--section-space);
+}
+
+.head {
+  row-gap: var(--spacing-5);
+  margin-bottom: var(--spacing-8);
+  align-items: end;
+}
+
+.headLabel {
+  grid-column: 1 / -1;
+}
+
+.headTitle {
+  grid-column: 1 / -1;
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: -0.01em;
+}
+
+.headText {
+  grid-column: 1 / -1;
+  max-width: 44ch;
+  color: var(--muted);
+}
+
+/* Two-column prose with an image beside it. */
+.split {
+  row-gap: var(--spacing-8);
+  align-items: start;
+}
+
+.prose {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--spacing-5);
+  max-width: 60ch;
+}
+
+.prose p:first-child {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: 1.4;
+}
+
+.prose p + p {
+  color: var(--muted);
+}
+
+.splitMedia {
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-arch);
+}
+
+/* Facts list: label / value rows with hairlines. */
+.facts {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.fact {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding-block: var(--spacing-3);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-meta);
+}
+
+.fact dt {
+  color: var(--muted);
+}
+
+/* Checklist of what a service includes. */
+.includes {
+  border-top: 1px solid var(--line);
+}
+
+.includes li {
+  display: grid;
+  grid-template-columns: var(--spacing-7) 1fr;
+  padding-block: var(--spacing-4);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+}
+
+.includes li span {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  color: var(--muted);
+  padding-top: var(--spacing-1);
+}
+
+/* Paired gallery images with different masks. */
+.gallery {
+  row-gap: var(--gutter);
+}
+
+.galleryA,
+.galleryB {
+  grid-column: 1 / -1;
+}
+
+.galleryA {
+  aspect-ratio: 4 / 3;
+  border-radius: 0 0 clamp(96px, 12vw, 224px) 0;
+}
+
+.galleryB {
+  aspect-ratio: 4 / 5;
+  border-radius: 50% 50% 0 0 / 36% 36% 0 0;
+}
+
+.factsCol,
+.includesCol,
+.cardA,
+.cardB {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 600px) {
+  .headTitle {
+    grid-column: 1 / span 6;
+  }
+
+  .headText {
+    grid-column: 1 / span 6;
+  }
+
+  .prose {
+    grid-column: 1 / span 5;
+  }
+
+  .splitMedia {
+    grid-column: 6 / -1;
+  }
+
+  .galleryA {
+    grid-column: 1 / span 5;
+  }
+
+  .galleryB {
+    grid-column: 6 / -1;
+    margin-top: var(--spacing-10);
+  }
+
+  .factsCol {
+    grid-column: 6 / -1;
+  }
+
+  .cardA {
+    grid-column: 1 / span 4;
+  }
+
+  .cardB {
+    grid-column: 5 / -1;
+    margin-top: var(--spacing-10);
+  }
+}
+
+@media (min-width: 1024px) {
+  .headLabel {
+    grid-column: 1 / span 3;
+    align-self: start;
+    padding-top: var(--spacing-3);
+  }
+
+  .headTitle {
+    grid-column: 4 / span 5;
+  }
+
+  .headText {
+    grid-column: 9 / -1;
+  }
+
+  .prose {
+    grid-column: 4 / span 5;
+  }
+
+  .splitMedia {
+    grid-column: 10 / -1;
+  }
+
+  .galleryA {
+    grid-column: 1 / span 7;
+  }
+
+  .galleryB {
+    grid-column: 9 / -1;
+  }
+
+  .factsCol {
+    grid-column: 10 / -1;
+  }
+
+  .includesCol {
+    grid-column: 4 / -1;
+  }
+
+  .cardA {
+    grid-column: 2 / span 4;
+  }
+
+  .cardB {
+    grid-column: 8 / span 4;
+  }
+}

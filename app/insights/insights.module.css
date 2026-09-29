@@ -1,0 +1,129 @@
+.feature {
+  margin-bottom: var(--spacing-9);
+}
+
+.featureLink {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--spacing-6);
+}
+
+.featureMedia {
+  aspect-ratio: 4 / 3;
+  border-radius: 0 clamp(96px, 14vw, 280px) 0 0;
+}
+
+.featureMedia img {
+  transition: scale 1.4s var(--ease-out);
+}
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  align-self: end;
+}
+
+.meta {
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  color: var(--muted);
+}
+
+.featureTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+}
+
+.excerpt {
+  max-width: 40ch;
+  color: var(--muted);
+}
+
+.read {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-meta);
+}
+
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: var(--spacing-2) var(--spacing-5);
+  align-items: center;
+  padding-block: var(--spacing-5);
+}
+
+.thumb {
+  grid-row: span 2;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.thumb img {
+  transition: scale 1.4s var(--ease-out);
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.arrow {
+  display: none;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .featureLink:hover .featureMedia img,
+  .row:hover .thumb img {
+    scale: 1.05;
+  }
+
+  .row:hover .rowTitle {
+    transform: translateX(var(--spacing-2));
+  }
+
+  .row:hover .arrow {
+    transform: translateX(var(--spacing-2));
+  }
+}
+
+@media (min-width: 1024px) {
+  .featureLink {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--spacing-9);
+  }
+
+  .row {
+    grid-template-columns: 120px minmax(0, 3fr) minmax(0, 6fr) auto;
+    gap: var(--spacing-7);
+  }
+
+  .thumb {
+    grid-row: auto;
+  }
+
+  .rowTitle {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+  }
+
+  .arrow {
+    display: block;
+  }
+}

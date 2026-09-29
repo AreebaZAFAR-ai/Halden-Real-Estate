@@ -1,0 +1,95 @@
+.card {
+  --radius: clamp(96px, 12vw, 200px);
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.media {
+  aspect-ratio: 4 / 5;
+  margin-bottom: var(--spacing-2);
+}
+
+.media img {
+  transition: scale 1.4s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .link:hover .media img {
+    scale: 1.05;
+  }
+
+  .link:hover .cta svg {
+    transform: translateX(var(--spacing-1));
+  }
+}
+
+/* Organic masks — varied, never the same radius twice in a row. */
+.arch {
+  border-radius: var(--radius-arch);
+}
+
+.corner {
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.cornerLeft {
+  border-radius: var(--radius) 0 0 0;
+}
+
+.rect {
+  border-radius: 0;
+}
+
+.leaf {
+  border-radius: var(--radius) 0 var(--radius) 0;
+}
+
+.oval {
+  border-radius: 50%;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--line);
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  color: var(--muted);
+}
+
+.status {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+}
+
+.details {
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  color: var(--muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+  font-size: var(--text-meta);
+}
+
+.cta svg {
+  transition: transform var(--duration) var(--ease-out);
+}

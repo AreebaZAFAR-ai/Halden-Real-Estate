@@ -1,0 +1,233 @@
+.frame {
+  --n: 1;
+  --col: calc((100% - 2 * var(--page-pad) - (var(--columns) - 1) * var(--gutter)) / var(--columns));
+  --line-x: calc(var(--page-pad) + var(--n) * var(--col) + (var(--n) - 0.5) * var(--gutter));
+  position: relative;
+  padding-top: calc(var(--cusp) + var(--spacing-7));
+  padding-bottom: var(--section-space);
+}
+
+.guide {
+  position: absolute;
+  top: 0;
+  height: var(--cusp);
+  left: var(--line-x);
+  width: 1px;
+  background: var(--line);
+}
+
+.cusp {
+  position: absolute;
+  top: -1px;
+  left: var(--line-x);
+  color: var(--color-light);
+  transform: translateX(-50%);
+}
+
+/* --- Heading row --------------------------------------------------------- */
+
+.head {
+  row-gap: var(--spacing-5);
+  padding-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--line);
+}
+
+.label {
+  grid-column: 1 / -1;
+}
+
+.title {
+  grid-column: 1 / -1;
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: -0.01em;
+}
+
+/* --- Story --------------------------------------------------------------- */
+
+.story {
+  position: relative;
+}
+
+.stickyMedia,
+.detail,
+.rail {
+  display: none;
+}
+
+.list {
+  grid-column: 1 / -1;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: var(--spacing-8) 1fr;
+  column-gap: var(--spacing-4);
+  row-gap: var(--spacing-3);
+  padding-block: var(--spacing-7);
+  border-bottom: 1px solid var(--line);
+}
+
+.inlineMedia {
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--spacing-4);
+  border-radius: 0 0 var(--spacing-10) 0;
+}
+
+.item:nth-child(even) .inlineMedia {
+  border-radius: var(--spacing-10) 0 0 0;
+}
+
+.index {
+  font-size: var(--text-meta);
+  color: var(--muted);
+  padding-top: var(--spacing-2);
+}
+
+.itemTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+}
+
+.itemText {
+  grid-column: 2;
+  max-width: 44ch;
+  font-size: var(--text-meta);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-out);
+}
+
+.layer[data-active] {
+  opacity: 1;
+}
+
+.layer .layerMedia {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.layer img {
+  transform: scale(1.08);
+  transition: transform 1.6s var(--ease-out);
+}
+
+.layer[data-active] img {
+  transform: scale(1);
+}
+
+@media (min-width: 600px) {
+  .frame {
+    --n: 2;
+  }
+
+  .label {
+    grid-column: 1 / span 2;
+  }
+
+  .title {
+    grid-column: 3 / -1;
+  }
+
+  .list {
+    grid-column: 3 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .frame {
+    --n: 3;
+    padding-top: calc(var(--cusp) + var(--spacing-8));
+  }
+
+  .label {
+    grid-column: 1 / span 3;
+  }
+
+  .title {
+    grid-column: 5 / span 6;
+  }
+
+  .stickyMedia,
+  .detail {
+    display: block;
+    position: sticky;
+    align-self: start;
+    overflow: hidden;
+  }
+
+  .stickyMedia {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    top: calc(50svh - 30svh);
+    height: 60svh;
+    margin-top: var(--spacing-8);
+    border-radius: 0 var(--spacing-10) 0 0;
+  }
+
+  .detail {
+    grid-column: 11 / span 2;
+    grid-row: 1;
+    top: calc(50svh + 10svh);
+    aspect-ratio: 4 / 3;
+    margin-top: 40svh;
+    border-radius: 0 0 var(--spacing-8) 0;
+  }
+
+  /* Progress runs down the seam line. */
+  .rail {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Same grid line as the seam, measured within the grid itself. */
+    left: calc((100% - 11 * var(--gutter)) / 12 * 3 + 2.5 * var(--gutter));
+    width: 1px;
+    background: var(--line);
+  }
+
+  .railFill {
+    position: sticky;
+    top: 0;
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  .list {
+    grid-column: 5 / span 5;
+    grid-row: 1;
+  }
+
+  .item {
+    min-height: 60svh;
+    align-content: center;
+    border-bottom: 1px solid var(--line);
+    opacity: 0.35;
+    transition: opacity 0.8s var(--ease-out);
+  }
+
+  .item[data-active] {
+    opacity: 1;
+  }
+
+  .inlineMedia {
+    display: none;
+  }
+}

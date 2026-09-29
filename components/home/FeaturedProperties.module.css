@@ -1,0 +1,147 @@
+.section {
+  position: relative;
+  padding-block: var(--section-space);
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-5);
+  padding-inline: var(--page-pad);
+  max-width: 560px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  max-width: 40ch;
+  color: var(--muted);
+}
+
+.progress {
+  display: none;
+}
+
+/* Phones & tablets: a native, snapping row. */
+.list {
+  display: flex;
+  gap: var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--page-pad);
+  padding-inline: var(--page-pad);
+  scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: none;
+  width: min(78vw, 360px);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 600px) {
+  .item {
+    width: min(45vw, 420px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    height: 100svh;
+    min-height: 720px;
+    padding-block: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .track {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-9);
+    width: max-content;
+    padding-inline: var(--page-pad);
+    will-change: transform;
+  }
+
+  .intro {
+    flex: none;
+    width: clamp(340px, 30vw, 520px);
+    padding-inline: 0;
+  }
+
+  .progress {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: var(--spacing-7);
+    background: var(--line);
+  }
+
+  .progressBar {
+    display: block;
+    height: 100%;
+    background: var(--color-ink);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .list {
+    overflow: visible;
+    padding-inline: 0;
+    gap: var(--spacing-8);
+    align-items: center;
+  }
+
+  /* Heights vary so the row reads as an editorial spread, not a carousel. */
+  .item {
+    width: clamp(300px, 24vw, 460px);
+  }
+
+  .item:nth-child(even) {
+    width: clamp(260px, 20vw, 380px);
+    margin-top: var(--spacing-10);
+  }
+}
+
+/* No pinning without motion: fall back to the native row. */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+    padding-block: var(--section-space);
+    display: block;
+  }
+
+  .track {
+    flex-direction: column;
+    align-items: stretch;
+    width: auto;
+    padding-inline: 0;
+  }
+
+  .intro {
+    padding-inline: var(--page-pad);
+  }
+
+  .list {
+    overflow-x: auto;
+    padding-inline: var(--page-pad);
+  }
+}

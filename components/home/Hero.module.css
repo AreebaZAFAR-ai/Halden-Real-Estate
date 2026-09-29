@@ -1,0 +1,287 @@
+.hero {
+  --guide-left: 16.66%;
+  --guide-right: 83.33%;
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  max-height: 1400px;
+  overflow: hidden;
+  background: var(--color-dark);
+  color: var(--color-cream);
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  will-change: transform;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soft light at the top for the dark wordmark, depth at the base for the headline. */
+.scrimTop,
+.scrimBottom {
+  position: absolute;
+  inset-inline: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.scrimTop {
+  top: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(241, 239, 228, 0.55), rgba(241, 239, 228, 0));
+}
+
+.scrimBottom {
+  bottom: 0;
+  height: 65%;
+  background: linear-gradient(to top, rgba(7, 28, 26, 0.82), rgba(7, 28, 26, 0.35) 55%, rgba(7, 28, 26, 0));
+}
+
+.frame {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(var(--header-h) + var(--spacing-2));
+  padding-bottom: var(--spacing-5);
+}
+
+/* --- Wordmark ------------------------------------------------------------ */
+
+.wordmark {
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: var(--text-hero--line-height);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.letterMask {
+  display: inline-block;
+  overflow: hidden;
+  /* Room for accents and descenders inside the mask. */
+  padding-block: 0.06em 0.02em;
+  margin-block: -0.06em -0.02em;
+}
+
+.letter {
+  display: inline-block;
+  background: linear-gradient(180deg, var(--color-dark) 20%, var(--color-forest) 55%, var(--color-green) 105%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- Split navigation ---------------------------------------------------- */
+
+.nav {
+  display: none;
+}
+
+.navGroup {
+  display: flex;
+  gap: var(--spacing-7);
+}
+
+.navGroup a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.02em;
+}
+
+.navGroup a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .navGroup a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* --- Guides (the architectural hairlines) --------------------------------- */
+
+.guide {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(243, 240, 229, 0.28);
+  transform-origin: top;
+  pointer-events: none;
+}
+
+/* --- Headline ------------------------------------------------------------ */
+
+.content {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  text-align: center;
+  padding-bottom: var(--spacing-7);
+}
+
+.mark {
+  width: var(--spacing-7);
+  height: var(--spacing-7);
+  color: var(--color-cream);
+  opacity: 0.9;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sub {
+  max-width: 34ch;
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.02em;
+  color: rgba(243, 240, 229, 0.78);
+}
+
+.scroll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid rgba(243, 240, 229, 0.35);
+  font-size: var(--text-meta);
+  letter-spacing: 0.02em;
+}
+
+.scrollArrow {
+  animation: nudge 2.8s var(--ease-in-out) infinite;
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* --- Cusps where the story section rises into the image ------------------- */
+
+.cuspEdge,
+.cuspFloat {
+  position: absolute;
+  left: var(--guide-right);
+  color: var(--color-light);
+  transform: translateX(-50%);
+}
+
+.cuspEdge {
+  bottom: -1px;
+}
+
+.cuspFloat {
+  display: none;
+  bottom: calc(var(--cusp) * 0.5 + var(--spacing-10));
+}
+
+/* --- Layouts ------------------------------------------------------------- */
+
+@media (max-width: 599px) {
+  .hero {
+    --guide-right: 78%;
+    min-height: 560px;
+  }
+
+  .title br {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .content {
+    padding-bottom: var(--spacing-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .frame {
+    padding-top: var(--spacing-5);
+    padding-bottom: var(--spacing-6);
+  }
+
+  .nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-5);
+    color: var(--color-cream);
+  }
+
+  .navRight {
+    gap: var(--spacing-7);
+  }
+
+  .enquire {
+    padding-left: var(--spacing-6);
+    border-left: 1px solid rgba(243, 240, 229, 0.35);
+  }
+
+  .guide {
+    display: block;
+    top: calc(var(--spacing-5) + var(--text-hero) * var(--text-hero--line-height) + var(--spacing-5));
+  }
+
+  .guideLeft {
+    left: var(--guide-left);
+  }
+
+  .guideRight {
+    left: var(--guide-right);
+  }
+
+  /* Headline sits between the guides, the scroll row spans them. */
+  .content {
+    padding-bottom: var(--spacing-7);
+  }
+
+  .scroll {
+    margin-inline: auto;
+    width: calc(var(--guide-right) - var(--guide-left) - var(--spacing-8));
+  }
+
+  .cuspFloat {
+    display: block;
+  }
+}

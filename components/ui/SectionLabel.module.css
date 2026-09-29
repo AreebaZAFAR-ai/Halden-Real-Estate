@@ -1,0 +1,16 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.icon {
+  flex: none;
+  opacity: 0.8;
+}

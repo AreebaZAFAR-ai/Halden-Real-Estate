@@ -1,0 +1,35 @@
+.grid {
+  row-gap: var(--spacing-9);
+}
+
+.item {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 600px) {
+  .item {
+    grid-column: span 4;
+  }
+
+  .item:nth-child(even) {
+    margin-top: var(--spacing-10);
+  }
+}
+
+@media (min-width: 1024px) {
+  .item {
+    grid-column: span 4;
+  }
+
+  .item:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .item:nth-child(3n + 2) {
+    margin-top: var(--spacing-10);
+  }
+
+  .item:nth-child(3n) {
+    margin-top: var(--spacing-8);
+  }
+}

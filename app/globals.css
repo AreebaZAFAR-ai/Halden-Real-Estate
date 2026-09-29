@@ -1,0 +1,331 @@
+/* ==========================================================================
+   Modisch — design tokens & base
+   ========================================================================== */
+
+:root {
+  /* Dark architectural palette */
+  --color-dark: #071c1a;
+  --color-dark-soft: #0d2724;
+  --color-cream: #f3f0e5;
+  --color-off-white: #f7f5ec;
+  --color-muted-on-dark: #a7aaa0;
+  --color-line: rgba(243, 240, 229, 0.16);
+  --color-accent: #b7c96a;
+
+  /* Light luxury palette */
+  --color-light: #f1efe4;
+  --color-paper: #f6f4ea;
+  --color-ink: #17221f;
+  --color-forest: #1d332c;
+  --color-muted-on-light: #747970;
+  --color-line-dark: rgba(23, 34, 31, 0.16);
+  --color-green: #7c9b55;
+
+  /* Families */
+  --font-display: var(--font-serif), "Times New Roman", serif;
+  --font-body: var(--font-sans), system-ui, sans-serif;
+
+  /* Type scale — fluid, capped so it does not run away on a 32in display */
+  --text-hero: clamp(4.5rem, 17vw, 17rem);
+  --text-hero--line-height: 0.82;
+  --text-script: clamp(3rem, 9vw, 9rem);
+  --text-script--line-height: 0.9;
+  --text-display: clamp(2.75rem, 6vw, 5.5rem);
+  --text-display--line-height: 0.94;
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-h2--line-height: 1.12;
+  --text-h3: clamp(1.25rem, 1.6vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --text-lead: clamp(1.125rem, 1.4vw, 1.375rem);
+  --text-lead--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.4;
+  --text-stat: clamp(3rem, 5vw, 4.5rem);
+  --text-stat--line-height: 1;
+
+  /* Spacing — strict 4px system */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+  --spacing-8: 64px;
+  --spacing-9: 96px;
+  --spacing-10: 128px;
+  --spacing-11: 160px;
+  --spacing-12: 224px;
+
+  /* Layout */
+  --page-pad: var(--spacing-4);
+  --gutter: var(--spacing-4);
+  --columns: 4;
+  --container-max: 1800px;
+  --header-h: 64px;
+  --section-space: var(--spacing-9);
+
+  /* Organic shape system */
+  --cusp: clamp(64px, 8vw, 144px);
+  --radius-soft: var(--spacing-4);
+  --radius-arch: 999px 999px 0 0;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration: 0.6s;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --page-pad: var(--spacing-6);
+    --gutter: var(--spacing-5);
+    --columns: 8;
+    --section-space: var(--spacing-10);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-pad: var(--spacing-7);
+    --gutter: var(--spacing-6);
+    --columns: 12;
+    --header-h: 72px;
+    --section-space: var(--spacing-11);
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --page-pad: var(--spacing-8);
+    --section-space: var(--spacing-12);
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-light);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.theme-dark {
+  background: var(--color-dark);
+  color: var(--color-cream);
+  --line: var(--color-line);
+  --muted: var(--color-muted-on-dark);
+}
+
+.theme-light {
+  background: var(--color-light);
+  color: var(--color-ink);
+  --line: var(--color-line-dark);
+  --muted: var(--color-muted-on-light);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+}
+
+.lead {
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+}
+
+.meta {
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.04em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--spacing-3);
+  left: var(--spacing-3);
+  z-index: 100;
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-ink);
+  color: var(--color-cream);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ==========================================================================
+   Motion — initial states only apply once JS has opted in (html.motion),
+   so content is always visible without JavaScript or with reduced motion.
+   ========================================================================== */
+
+.motion [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+}
+
+.motion [data-reveal-image] {
+  opacity: 0;
+}
+
+.motion [data-reveal-image] img,
+.motion [data-reveal-image] video {
+  transform: scale(1.16);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
