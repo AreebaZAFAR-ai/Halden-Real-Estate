@@ -20,6 +20,7 @@ export default function InsightsPage() {
     <>
       <PageHero
         eyebrow="Insights"
+        topLabel
         title="Notes on caring for considered homes"
         lead="Short, practical writing from our team on materials, maintenance and the quieter side of ownership."
       />

@@ -14,9 +14,11 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About us"
+        topLabel
         title="Property management, considered differently."
         lead="Since 2012 we have looked after homes as if they were our own — quietly, precisely, and with the owner always in the picture."
-        image="travertineTower"
+        image="interiorAtrium"
+        split
       />
       <Story />
       <Values />

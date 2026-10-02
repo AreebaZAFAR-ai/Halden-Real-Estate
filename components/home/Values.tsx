@@ -53,9 +53,10 @@ export function Values() {
         <Cusp shape="hourglass" className={styles.cusp} />
 
         <div className={`grid ${styles.head}`}>
-          <SectionLabel className={styles.label}>Core values</SectionLabel>
+          <SectionLabel className={styles.label}>MODISCH</SectionLabel>
           <h2 id="values-title" className={styles.title} data-reveal>
-            The principles behind every property we manage
+
+            MODISCH Core Values
           </h2>
         </div>
 

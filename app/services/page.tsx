@@ -16,10 +16,13 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Services"
-        title="Everything a well-kept property needs."
+        eyebrow="Our services"
+        topLabel
+        title="Everything a well‑kept property needs."
         lead="One accountable team for the whole life of your home — from daily care to long-term planning."
-        image="glassStoneHouse"
+        image="modernHouse"
+        split
+        small
       />
 
       <section className={`theme-light ${styles.sectionTight}`} data-nav-theme="light" aria-labelledby="services-list">

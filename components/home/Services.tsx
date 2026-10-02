@@ -27,7 +27,7 @@ export function Services() {
 
           <div className={styles.main}>
             <h2 id="services-title" className={styles.title} data-reveal>
-              Management that moves your property forward
+              OUR SERVICES
             </h2>
             <ServicesAccordion services={services} />
           </div>

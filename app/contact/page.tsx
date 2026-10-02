@@ -16,6 +16,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
+        topLabel
         title="Tell us about your home"
         lead="What it is, where it is, and how you would like it cared for. We reply within one working day."
       />

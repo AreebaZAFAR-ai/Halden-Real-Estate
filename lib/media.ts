@@ -17,6 +17,7 @@ const img = (file: string, alt: string, position?: string): ImageAsset => ({
 });
 
 export const images = {
+  hero: img("hero..", "White contemporary villa with full-height glazing above an infinity pool at dusk", "50% 45%"),
   zenCourt: img("zen-court", "Stone-clad house above a still reflecting pool and gravel garden", "50% 40%"),
   stoneVillaDusk: img("stone-villa-dusk", "Two-storey limestone villa with warm interior light at dusk", "50% 45%"),
   timberFacade: img("timber-facade", "Dark timber facade with uplit planting at the entrance", "50% 50%"),
@@ -35,6 +36,7 @@ export const images = {
   interiorIvory: img("interior-ivory", "Ivory living space with low sofas and a floating staircase", "50% 55%"),
   nightVilla: img("night-villa", "Contemporary villa lit at night above a pale stone forecourt", "50% 45%"),
   interiorAtrium: img("interior-atrium", "Bright entrance atrium with a staircase and arched windows", "50% 45%"),
+  modernHouse: img("Modernhouse", "Stone and dark-brick house with tall black windows behind a curving garden path", "50% 50%"),
   archedResidenceDay: img("arched-residence-day", "Cream classical residence with an arched window in daylight", "50% 45%"),
   travertineEntrance: img("travertine-entrance", "Travertine path leading to a timber-soffit entrance", "50% 55%"),
 } satisfies Record<string, ImageAsset>;

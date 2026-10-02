@@ -15,6 +15,7 @@ export default function PropertiesPage() {
     <>
       <PageHero
         eyebrow="Properties"
+        topLabel
         title="Residences in our care"
         lead="Private homes we manage across Europe — a few of them available to let, all of them looked after to the same standard."
       />

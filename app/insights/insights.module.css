@@ -104,9 +104,15 @@
 }
 
 @media (min-width: 1024px) {
+  /* Text on the left, picture on the right. */
   .featureLink {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: var(--spacing-9);
+  }
+
+  .featureMedia {
+    order: 2;
+    border-radius: clamp(96px, 14vw, 280px) 0 0 0;
   }
 
   .row {

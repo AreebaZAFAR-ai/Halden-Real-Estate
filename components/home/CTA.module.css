@@ -1,46 +1,19 @@
 .section {
-  padding-top: var(--spacing-9);
+  padding-block: var(--section-space);
 }
 
-.panel {
-  --arc: clamp(160px, 38vw, 720px);
-  position: relative;
-  min-height: clamp(560px, 92svh, 1100px);
+.inner {
   display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  border-top-right-radius: var(--arc);
-  isolation: isolate;
-  color: var(--color-cream);
-}
-
-.media {
-  position: absolute;
-  inset: -8% 0;
-  z-index: -2;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-}
-
-.scrim {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(to top, rgba(7, 28, 26, 0.92) 0%, rgba(7, 28, 26, 0.55) 40%, rgba(7, 28, 26, 0.05) 75%);
-}
-
-.content {
-  display: grid;
-  gap: var(--spacing-7);
-  padding-bottom: var(--spacing-8);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  text-align: center;
 }
 
 .copy {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-5);
 }
 
@@ -51,6 +24,7 @@
   font-size: var(--text-display);
   line-height: var(--text-display--line-height);
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .text {
@@ -62,12 +36,20 @@
 
 .action {
   width: min(100%, 320px);
+  margin-top: var(--spacing-3);
 }
 
-@media (min-width: 1024px) {
-  .content {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    padding-bottom: var(--spacing-9);
-  }
+/* Portrait arch at the video's own proportions (720 × 1290), well under its
+   native width so it never has to upscale. */
+.frame {
+  width: min(100%, 380px);
+  aspect-ratio: 720 / 1290;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-dark-soft);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
 }
