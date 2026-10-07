@@ -48,7 +48,7 @@
   animation: fade 1.6s var(--ease-out) 0.2s both;
 }
 
-/* Page heading centred at the top — set like the MODISCH wordmark, smaller. */
+/* Page heading centred at the top — set like the HALDEN wordmark, smaller. */
 .topLabel {
   margin-bottom: var(--spacing-8);
   text-align: center;

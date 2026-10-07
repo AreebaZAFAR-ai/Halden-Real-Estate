@@ -1,14 +1,14 @@
 export type NavItem = { label: string; href: string };
 
 export const site = {
-  name: "Modisch",
-  legalName: "Modisch Property Care",
+  name: "Halden",
+  legalName: "Halden Property Care",
   tagline: "Thoughtful care for properties that matter.",
   description:
-    "Modisch manages private residences and considered buildings with precision, discretion and genuine care — protecting value and simplifying ownership.",
+    "Halden manages private residences and considered buildings with precision, discretion and genuine care — protecting value and simplifying ownership.",
   established: 2012,
   contact: {
-    email: "hello@modisch.studio",
+    email: "hello@halden.studio",
     phone: "+49 40 2286 1140",
     phoneHref: "+494022861140",
     address: ["Elbchaussee 118", "22763 Hamburg"],

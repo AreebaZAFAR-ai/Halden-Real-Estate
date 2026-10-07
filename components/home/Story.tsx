@@ -19,7 +19,7 @@ export function Story() {
           <span className={styles.soft}>
             to protect value and simplify ownership, while keeping every home{""}
             <span className={styles.chip} aria-hidden="true">
-              <Image src={images.interiorSunset.jpg} alt="" fill sizes="96px" className={styles.chipImage} />
+              <Image src={images.interiorSunset.src} alt="" fill sizes="96px" className={styles.chipImage} />
             </span>{" "}
             <span className={styles.chipMark} aria-hidden="true">
               <LogoMark />

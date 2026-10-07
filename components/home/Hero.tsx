@@ -159,7 +159,7 @@ export function Hero() {
           </ul>
         </nav>
 
-        {/* Center MODISCH */}
+        {/* Center HALDEN */}
         <div
           className={styles.wordmark}
           data-wordmark

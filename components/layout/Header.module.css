@@ -1,5 +1,5 @@
 .header {
-  --fg: var(--color-ink);
+  --fg: #000;
   --bg: var(--color-light);
   --rule: var(--color-line-dark);
   position: fixed;
@@ -11,8 +11,7 @@
     visibility 0s linear 0s;
 }
 
-.header[data-theme="dark"],
-.header[data-theme="image"] {
+.header[data-state="open"] {
   --fg: var(--color-cream);
   --bg: var(--color-dark);
   --rule: var(--color-line);
@@ -26,14 +25,9 @@
   z-index: -1;
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
-  opacity: 0;
   transition:
     opacity var(--duration) var(--ease-out),
     background-color var(--duration) var(--ease-out);
-}
-
-.header[data-solid]:not([data-theme="image"])::before {
-  opacity: 1;
 }
 
 .header[data-state="tucked"] {
@@ -64,7 +58,7 @@
 .link,
 .cta {
   position: relative;
-  font-size: var(--text-meta);
+  font-size: var(--text-body);
   line-height: var(--text-meta--line-height);
   letter-spacing: 0.02em;
 }
@@ -122,15 +116,6 @@
 
 .header[data-state="open"] .toggleLines {
   transform: scaleX(0.6);
-}
-
-/* Homepage, over the hero: the hero owns the brand; only the toggle shows. */
-.header[data-state="hero"] .logo {
-  visibility: hidden;
-}
-
-.header[data-state="hero"] {
-  color: var(--color-cream);
 }
 
 @media (min-width: 1024px) {

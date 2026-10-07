@@ -53,7 +53,7 @@ export function BuildingIcon(props: IconProps) {
   );
 }
 
-/** Modisch mark: an arched doorway set on a horizon, inside a ring. */
+/** Halden mark: an arched doorway set on a horizon, inside a ring. */
 export function LogoMark(props: IconProps) {
   return (
     <svg viewBox="0 0 40 40" {...base} strokeWidth={1.4} {...props}>

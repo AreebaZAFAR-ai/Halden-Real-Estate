@@ -1,4 +1,4 @@
-# CLAUDE.md — Luxury Real Estate Website (Modisch)
+# CLAUDE.md — Luxury Real Estate Website (Halden)
 
 ## Project notes (current state)
 
